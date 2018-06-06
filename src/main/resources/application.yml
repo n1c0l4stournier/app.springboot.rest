@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    #url: jdbc:mysql://172.19.0.2:3306/db_rest
+    url: jdbc:mysql://mysql_db:3306/db_rest
+    username: root
+    password: pass
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8181

@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+
+  mysql_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: db_rest
+    volumes:
+    - mysql-data:/var/lib/mysql
+
+  api:
+    image: n1c0l4stournier/springboot.rest:0.0.1
+    deploy:
+      replicas: 2
+    ports:
+    - 8181:8181
+
+volumes:
+  mysql-data:
