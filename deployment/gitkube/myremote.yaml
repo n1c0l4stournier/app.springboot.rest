@@ -1,0 +1,28 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: example
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC1a3pqURNtAJ3lsJ467Y2guzXOmuFxZpI07FAkxzekcxuPoItZ3bi9hzmEfIJjmpmmBk965hLvphV36TRn7gAUD4VUoEaatLcQJL0kZq7ggPYVMAWpVP8ZIcEePhpNjTWTJyK2vnWyhpf3B2+mVp7/poSABBQrkZwgNz6kflUiX5QMnK3atmdlk0p1NSJjSxpY4BQSm56WvkpBMGk96HOrvg8AysA9z58CwjRm/mPMasdQWBgpLZiSaO35V9S/AGDuglDp5+QIGXB2RUllwfvlhcyInVmJDL+A4v0MLEORUUCjpiul+vqippZHpJHWwwG2E/1UrH5VLkRkVHoTE668AqBQVVGCHodnNaUCd0BJ6VKg6V2BJg7T4DW30Mx1LXoMAeKuHXSpxFeqNuklZJXW8MpVHRYzmdCCeBQZy1LyBoowo6KMhhPXNgzNc4U1KFUM00VuKXWc9pc0e7L6cY3tlDRc0nncZViVpnGwl7o44OCI2P8eQ7H5Qxpdjcyuj7/sKJ2nGi4/9cztRnpgjzXWhtmtD8ta3SUJZzou/XBUg/mPI8CDq3X5BtRZw6WYtnjEffA1JrH+CNm0+szfNk+SC/1d2ussMnpVCiT2boWid6AwoobGYQhuu8FEOQ/Hcg8fA4e+Pt3B1xBtcvuT+ta9/D6iCP55pKh1J4Zy44O2dw== n.tournier@linkbynet.com
+  deployments:
+  - containers:
+    - dockerfile: Dockerfile
+      name: app
+      path: ./
+    name: app
+  manifests:
+    helm: {}
+    path: ../kubernetes/k8s-api-deployment/
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+      secretRef: regsecret
+    url: docker.io/n1c0l4stournier
+status:
+  remoteUrl: "https://github.com/n1c0l4stournier/app.springboot.rest"
+  remoteUrlDesc: ""
