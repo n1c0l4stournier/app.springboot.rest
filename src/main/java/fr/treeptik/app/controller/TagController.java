@@ -38,6 +38,7 @@ public class TagController {
 	@GetMapping
 	@ResponseBody
 	public ResponseEntity<Resources<TagResource>> list() {
+		// test 
 		Resources<TagResource> resources = new Resources<>(assembler.toResources(repository.findAll()));
 		resources.add(ControllerLinkBuilder
 				.linkTo(ControllerLinkBuilder.methodOn(TagController.class).list())
