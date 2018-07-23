@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ public class TagController {
 	private TagResourceAssembler assembler;
 
 	@GetMapping
+	@CrossOrigin
 	@ResponseBody
 	public ResponseEntity<Resources<TagResource>> list() {
 		// test 
@@ -47,6 +49,7 @@ public class TagController {
 	}
 	
 	@GetMapping(value = "/{id}")
+	@CrossOrigin
 	@ResponseBody
 	public ResponseEntity<TagResource> find(@PathVariable UUID id) {
 		Optional<Tag> editor = repository.findById(id);
@@ -59,6 +62,7 @@ public class TagController {
 	}
 	
 	@PostMapping
+	@CrossOrigin
 	@ResponseBody
 	public ResponseEntity<TagResource> create(@RequestBody TagResource request) {
 		Tag model = mapper.map(request, Tag.class);
@@ -70,6 +74,7 @@ public class TagController {
 	}
 
 	@PutMapping(value = "/{id}")
+	@CrossOrigin
 	@ResponseBody
 	public ResponseEntity<TagResource> update(@PathVariable UUID id, @RequestBody TagResource request) {
 		Optional<Tag> editor = repository.findById(id);
@@ -85,6 +90,7 @@ public class TagController {
 	}
 	
 	@DeleteMapping(value = "/{id}")
+	@CrossOrigin
 	@ResponseBody
 	public ResponseEntity<Void> delete(@PathVariable UUID id) {
 		Optional<Tag> editor = repository.findById(id);
