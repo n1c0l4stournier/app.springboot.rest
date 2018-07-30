@@ -7,6 +7,8 @@ services:
       MYSQL_PASSWORD: 3Xf6hcpbyySgX9Tu
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: db_rest
+    ports:
+    - 3306:3306
     volumes:
     - mysql-data:/var/lib/mysql
 volumes:
