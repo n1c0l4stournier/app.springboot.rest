@@ -2,14 +2,14 @@ image: maven:3.3.9
 
 pipelines:
   default:
-    build:
       - step:
+          name : build
           caches:
            - maven
           script:
            - mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile
-    test:
       - step:
+          name : tests
           caches:
             - maven
           script:
