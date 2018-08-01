@@ -1,0 +1,28 @@
+image: maven:3.3.9
+
+pipelines:
+  default:
+      - step:
+          name : build
+          caches:
+           - maven
+          script:
+           - mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile
+      - step:
+          name : tests
+          caches:
+            - maven
+          script:
+            - mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true verify # -B batch mode makes Maven less verbose
+          services: 
+            - mysql
+
+definitions: 
+  services: 
+    mysql: 
+      image: mysql:5.7 
+      environment: 
+        MYSQL_DATABASE: 'db_rest'
+        MYSQL_RANDOM_ROOT_PASSWORD: 'yes' 
+        MYSQL_USER: 'debian-sys-maint'
+        MYSQL_PASSWORD: '3Xf6hcpbyySgX9Tu'
