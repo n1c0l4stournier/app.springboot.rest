@@ -1,8 +1,7 @@
 apiVersion: gitkube.sh/v1alpha1
 kind: Remote
 metadata:
-  creationTimestamp: null
-  name: example
+  name: sampleremote
   namespace: default
 spec:
   authorizedKeys:
@@ -24,5 +23,5 @@ spec:
       secretRef: regsecret
     url: docker.io/n1c0l4stournier
 status:
-  remoteUrl: "git@github.com:n1c0l4stournier/app.springboot.rest.git"
+  remoteUrl: ssh://default-sampleremote@192.168.99.100:30151/~/git/default-sampleremote
   remoteUrlDesc: ""
