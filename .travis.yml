@@ -1,0 +1,14 @@
+language: java
+
+services:
+  - mysql
+
+env:
+  - DB_URL="127.0.0.1:3306" DB_USER="travis" DB_PASS=""
+
+before_install:
+  - mysql -e 'CREATE DATABASE db_rest;'
+
+script:
+- mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true test-compile
+- mvn --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true verify
