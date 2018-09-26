@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: springboot-rest
 spec:
-  type: NodePort
   ports:
   - name: "springboot-rest-service"
-    port: 8282
+    port: 8181
     targetPort: 8181
-    nodePort: 30001
   selector:
     app: springboot-rest
