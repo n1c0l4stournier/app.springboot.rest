@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:mysql://${DB_URL}/db_rest
+    url: jdbc:mysql://${DB_URL:localhost}/db_rest
     username: ${DB_USER:debian-sys-maint}
     password: ${DB_PASS:3Xf6hcpbyySgX9Tu}
     driver-class-name: com.mysql.jdbc.Driver
