@@ -3,9 +3,9 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
-    url: jdbc:mysql://${DB_URL:localhost}/db_rest
+    url: jdbc:mysql://${DB_URL:localhost}/${DB_NAME:db_rest}
     username: ${DB_USER:debian-sys-maint}
     password: ${DB_PASS:3Xf6hcpbyySgX9Tu}
     driver-class-name: com.mysql.jdbc.Driver

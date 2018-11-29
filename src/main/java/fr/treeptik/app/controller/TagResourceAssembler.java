@@ -25,7 +25,7 @@ public class TagResourceAssembler extends ResourceAssemblerSupport<Tag, TagResou
 		mapper.map(entity, resource);
 		resource.add(ControllerLinkBuilder
 				.linkTo(ControllerLinkBuilder.methodOn(TagController.class).list())
-				.withRel("editors"));
+				.withRel("tags"));
 		return resource;
 	}
 

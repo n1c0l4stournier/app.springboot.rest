@@ -8,7 +8,7 @@ services:
     volumes:
     - mysql-data:/var/lib/mysql
   api:
-    image: n1c0l4stournier/springboot.rest:0.0.2
+    image: n1c0l4stournier/springboot.rest:1.0.0
     environment:
       DB_HOST: mysqldb
       DB_USER: root
