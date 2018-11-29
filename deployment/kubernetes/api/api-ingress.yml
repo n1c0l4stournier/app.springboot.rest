@@ -3,12 +3,12 @@ kind: Ingress
 metadata:
   name: rest-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /api
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /api
+      - path: /dev
         backend:
-          serviceName: springboot-rest-service
-          servicePort: 8080
+          serviceName: api-service
+          servicePort: 8181
