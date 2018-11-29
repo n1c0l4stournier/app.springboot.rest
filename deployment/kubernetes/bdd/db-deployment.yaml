@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: mysql
+  name: mysql-deployment
 spec:
   replicas: 1
   strategy:
@@ -16,7 +16,7 @@ spec:
           image: mysql:5.7
           volumeMounts:
             - mountPath: "/var/lib/mysql"
-              name: mysql
+              name: mysql-volume
           ports:
             - containerPort: 3306
           env:
@@ -25,22 +25,22 @@ spec:
                 configMapKeyRef:
                   name: db-config
                   key: mysql-database
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: mysql-user
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: db-credentials
                   key: mysql-root-password
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-credentials
-                  key: mysql-user
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: db-credentials
                   key: mysql-password
       volumes:
-        - name: mysql
-          persistentVolumeClaim:
-            claimName: mysql-pvc
+        - name: mysql-volume
+          hostPath:
+            path: /data
