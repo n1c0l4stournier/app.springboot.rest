@@ -11,17 +11,16 @@ RUN adduser -Dh /home/treeptik treeptik
 
 COPY --from=build target/springboot.rest-0.0.1-SNAPSHOT.jar /home/treeptik/
 
-ARG DB_USER_ARG=root
-ENV DB_USER=$DB_USER_ARG
+ARG DB_USER="root"
+ARG DB_PASS="pass"
+ARG DB_URL="localhost:3306"
+ARG DB_NAME="db_rest"
 
-ARG DB_PASS_ARG=pass
-ENV DB_PASS=$DB_PASS_ARG
-
-ARG DB_URL_ARG="localhost:3306"
-ENV DB_URL=$DB_URL_ARG
-
-ARG DB_NAME_ARG="db_rest"
-ENV DB_NAME=$DB_NAME_ARG
+ENV \
+    DB_URL=$DB_URL \
+    DB_USER=$DB_USER \
+    DB_PASS=$DB_PASS \
+    DB_NAME=$DB_NAME
 
 EXPOSE 8181
 ENTRYPOINT [ "java", "-jar", "/home/treeptik/springboot.rest-0.0.1-SNAPSHOT.jar" ]
